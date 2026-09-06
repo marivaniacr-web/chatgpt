@@ -11,6 +11,8 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.cjs')
     }
   });
+  window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+  window.webContents.on('will-navigate', (event) => event.preventDefault());
   window.loadFile(path.join(__dirname, '../dist/index.html'));
 }
 app.whenReady().then(createWindow);

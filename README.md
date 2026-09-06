@@ -24,9 +24,15 @@ npm run dist:win
 
 O `electron-builder` produzirá um instalador NSIS `.exe` na pasta `release/`. O assistente permite escolher o diretório de instalação.
 
+## Verificar a lógica
+
+```bash
+npm test
+```
+
 ## Funcionamento da correção
 
 * Para nove dígitos, calcula os dois dígitos verificadores faltantes.
-* Para onze dígitos inválidos, recalcula os verificadores e testa uma substituição de um único algarismo.
-* As opções são ordenadas por uma confiança heurística; sempre confirme o número com a pessoa titular ou documento autorizado antes de usá-lo.
+* Para onze dígitos inválidos, recalcula somente os dois dígitos verificadores a partir dos nove primeiros algarismos.
+* A ferramenta não altera os nove primeiros algarismos, pois não há uma forma segura de inferir um erro nessa parte do identificador. Sempre confirme o número com a pessoa titular ou documento autorizado antes de usá-lo.
 * A consulta pública é limitada ao nome completo informado conscientemente pela pessoa usuária; o app não executa buscas por CPF.
