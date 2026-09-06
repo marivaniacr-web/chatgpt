@@ -35,6 +35,6 @@ npm test
 ## Funcionamento da correção
 
 * Para nove dígitos, calcula os dois dígitos verificadores faltantes.
-* Para onze dígitos inválidos, recalcula somente os dois dígitos verificadores a partir dos nove primeiros algarismos.
-* A ferramenta não altera os nove primeiros algarismos, pois não há uma forma segura de inferir um erro nessa parte do identificador. Sempre confirme o número com a pessoa titular ou documento autorizado antes de usá-lo.
+* Para onze dígitos inválidos, recalcula os dois dígitos verificadores e também testa uma troca por vez nos nove primeiros algarismos, preservando os verificadores informados; sequências repetidas são rejeitadas.
+* Uma troca em um algarismo pode gerar mais de uma possibilidade matemática. A ferramenta sempre exibe isso como sugestão, não como confirmação de identidade. Sempre confirme o número com a pessoa titular ou documento autorizado antes de usá-lo.
 * A consulta pública é limitada ao nome completo informado conscientemente pela pessoa usuária; o app não executa buscas por CPF.
