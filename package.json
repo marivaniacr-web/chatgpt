@@ -1,28 +1,42 @@
 {
   "name": "cpf-ajuste",
   "version": "1.0.0",
-  "description": "Assistente local de validação e correção de CPF",
+  "description": "Assistente local de valida\u00e7\u00e3o e corre\u00e7\u00e3o de CPF",
   "main": "electron/main.cjs",
   "scripts": {
     "start": "vite --host 0.0.0.0",
     "build": "vite build",
     "desktop": "npm run build && electron .",
-    "dist:win": "npm run build && electron-builder --win nsis"
+    "dist:win": "npm run test && npm run build && electron-builder --win nsis",
+    "test": "node --test"
   },
   "build": {
     "appId": "br.com.cpfajuste.app",
     "productName": "CPF Ajuste",
-    "directories": { "output": "release" },
-    "files": ["dist/**/*", "electron/**/*", "package.json"],
-    "win": { "target": ["nsis"] },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "latest",
-    "electron": "latest",
-    "electron-builder": "latest",
-    "vite": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "@vitejs/plugin-react": "4.3.3",
+    "electron": "32.2.6",
+    "electron-builder": "25.1.8",
+    "vite": "5.4.10",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }
