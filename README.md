@@ -13,7 +13,6 @@ npm run desktop
 
 > Se o aplicativo foi gerado antes desta correção e abriu em branco, execute novamente `npm run dist:win` e instale o novo `.exe`. O Electron abre a versão compilada em `dist/`, por isso os arquivos precisam ser gerados novamente.
 
-
 ## Gerar o instalador Windows
 
 Em uma máquina Windows (ou ambiente de CI Windows), execute:
@@ -24,6 +23,8 @@ npm run dist:win
 ```
 
 O `electron-builder` produzirá um instalador NSIS `.exe` na pasta `release/`. O assistente permite escolher o diretório de instalação.
+
+O instalador não é assinado com certificado de código. Por isso, o Windows pode mostrar um aviso do SmartScreen ao executá-lo; publique somente por um canal confiável e, para distribuição pública, use um certificado de assinatura de código.
 
 ## Verificar a lógica
 
@@ -36,9 +37,4 @@ npm test
 * Para nove dígitos, calcula os dois dígitos verificadores faltantes.
 * Para onze dígitos inválidos, recalcula somente os dois dígitos verificadores a partir dos nove primeiros algarismos.
 * A ferramenta não altera os nove primeiros algarismos, pois não há uma forma segura de inferir um erro nessa parte do identificador. Sempre confirme o número com a pessoa titular ou documento autorizado antes de usá-lo.
-## Funcionamento da correção
-
-* Para nove dígitos, calcula os dois dígitos verificadores faltantes.
-* Para onze dígitos inválidos, recalcula os verificadores e testa uma substituição de um único algarismo.
-* As opções são ordenadas por uma confiança heurística; sempre confirme o número com a pessoa titular ou documento autorizado antes de usá-lo.
 * A consulta pública é limitada ao nome completo informado conscientemente pela pessoa usuária; o app não executa buscas por CPF.
